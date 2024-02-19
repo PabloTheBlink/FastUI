@@ -15,12 +15,6 @@
     format("truetype");
 }
 
-/*:root {
-  --color-1: #657e38;
-  --color-2: #232e30;
-  --color-3: #b4b649;
-}*/
-
 html:root {
   --background-color: #e8e8e8;
   --white: white;
@@ -42,229 +36,237 @@ html[dark]:root {
 html {
   font-family: Fredoka;
   font-size: 14px;
-}
 
-body {
-  background-color: var(--background-color);
-  color: var(--black);
-}
+  & body {
+    background-color: var(--background-color);
+    color: var(--black);
 
-textarea:focus,
-input:focus {
-  outline: none;
-}
+    & .container {
+      width: 100%;
+      max-width: 60rem;
+      height: 100%;
+      margin: auto;
+      padding: 1rem;
+      position: relative;
+    }
 
-.container {
-  width: 100%;
-  max-width: 60rem;
-  height: 100%;
-  margin: auto;
-  padding: 1rem;
-  position: relative;
-}
+    & button {
+      font-size: 1.25rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      border: 0;
+      background-color: transparent;
+      color: var(--black);
+      cursor: pointer;
 
-button {
-  font-size: 1.25rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  border: 0;
-  background-color: transparent;
-  color: var(--black);
-  cursor: pointer;
-}
+      &.btn-primary {
+        background-color: var(--black);
+        color: var(--white);
+      }
 
-h1 {
-  font-family: "Freckle_Face";
-}
+      &.btn-secondary {
+        background-color: var(--black);
+        color: var(--white);
+      }
+    }
 
-.btn-primary {
-  /*background-color: var(--primary-color);*/
-  background-color: var(--black);
-  /*color: white;*/
-  color: var(--white);
-}
+    & h1 {
+      font-family: "Freckle_Face";
+    }
 
-.btn-secondary {
-  /*background-color: var(--secondary-color);*/
-  background-color: var(--black);
-  /*color: white;*/
-  color: var(--white);
-}
+    & ul {
+      list-style: none;
+      padding: 0;
 
-.cursor-pointer {
-  cursor: pointer;
-}
+      & li {
+        padding: 1rem;
+        border: 0.01rem solid var(--shadow);
+        border-radius: 0.5rem;
+        margin: 1rem 0;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        font-size: 1.25rem;
+        background-color: var(--white);
 
-.flex-1 {
-  flex: 1;
-}
+        & i {
+          font-size: 1.5rem;
+        }
 
-ul {
-  list-style: none;
-  padding: 0;
-}
+        &.active {
+          background-color: var(--black) !important;
+          color: var(--white);
+        }
 
-ul li {
-  padding: 1rem;
-  border: 0.01rem solid var(--shadow);
-  border-radius: 0.5rem;
-  margin: 1rem 0;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  font-size: 1.25rem;
-  background-color: var(--white);
-}
+        & button {
+          opacity: 0.5;
 
-.app .sidebar ul li {
-  background-color: var(--background-color);
-}
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
 
-ul li i {
-  font-size: 1.5rem;
-}
+    & .cursor-pointer {
+      cursor: pointer;
+    }
 
-ul li.active {
-  background-color: var(--black) !important;
-  color: var(--white);
-}
+    & .flex-1 {
+      flex: 1;
+    }
 
-ul li button {
-  opacity: 0.5;
-}
+    & .overlay {
+      background-color: var(--white);
+      opacity: 0.5;
+    }
 
-ul li button:hover {
-  opacity: 1;
-}
+    & .modal {
+      background-color: var(--white) !important;
+      color: var(--black) !important;
+      box-shadow: 0 0 0.5rem var(--shadow);
+    }
 
-.overlay {
-  background-color: var(--white);
-  opacity: 0.5;
-}
+    & input,
+    & select,
+    & textarea {
+      padding: 0.5rem;
+      border: 0.1rem solid var(--black);
+      background-color: var(--white);
+      border-radius: 0.5rem;
+      color: var(--black);
 
-.modal {
-  background-color: var(--white) !important;
-  color: var(--black) !important;
-  box-shadow: 0 0 0.5rem var(--shadow);
-}
+      &:focus {
+        outline: none;
+      }
+    }
 
-input,
-select,
-textarea {
-  padding: 0.5rem;
-  border: 0.1rem solid var(--black);
-  background-color: var(--white);
-  border-radius: 0.5rem;
-  color: var(--black);
-}
+    & fieldset {
+      margin: 1rem 0;
+      border-radius: 0.5rem;
+    }
 
-fieldset {
-  margin: 1rem 0;
-  border-radius: 0.5rem;
-}
+    & .app {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
 
-.app {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
+      & .sidebar {
+        width: 30rem;
+        height: 100%;
+        background-color: var(--white);
 
-.app .sidebar {
-  width: 30rem;
-  height: 100%;
-  background-color: var(--white);
-}
+        & .panel {
+          background-color: var(--background-color);
+        }
 
-.app .sidebar .header {
-  padding: 1rem 2rem;
-}
+        & .header {
+          padding: 1rem 2rem;
+        }
 
-.app .sidebar .content {
-  padding: 1rem 2rem;
-  height: calc(100% - 7.5rem);
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-}
+        & ul {
+          & li {
+            background-color: var(--background-color);
+          }
+        }
 
-.app:not(.show-sidebar) .sidebar {
-  display: none;
-}
+        & .content {
+          padding: 1rem 2rem;
+          height: calc(100% - 7.5rem);
+          display: flex;
+          flex-direction: column;
+          overflow-y: auto;
+        }
+      }
 
-.app .header button i {
-  font-size: 1.5rem;
-}
+      &:not(.show-sidebar) {
+        & .sidebar {
+          display: none;
+        }
 
-.app .header span {
-  font-size: 1.1rem;
-}
+        & .main {
+          width: 100%;
+        }
+      }
 
-.app .main {
-  width: calc(100% - 30rem);
-  height: 100%;
-}
+      & .header {
+        width: 100%;
+        height: 7.5rem;
 
-.app:not(.show-sidebar) .main {
-  width: 100%;
-}
+        & .header-top {
+          height: 1rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
 
-.app .header {
-  width: 100%;
-  height: 7.5rem;
-}
+          & button {
+            margin-top: 0.25rem;
+            padding: 0;
+          }
+        }
 
-.app .header .header-top {
-  height: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+        & .header-bottom {
+          height: 6.5rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          padding-bottom: 1rem;
+        }
 
-.app .header .header-top button {
-  margin-top: 0.25rem;
-  padding: 0;
-}
+        & button {
+          & i {
+            font-size: 1.5rem;
+          }
+        }
 
-.app .header .header-bottom {
-  height: 6.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-bottom: 1rem;
-}
+        & span {
+          font-size: 1.1rem;
+        }
+      }
 
-.app .main .content {
-  overflow: auto;
-  height: calc(100% - 7.5rem);
-}
+      & .main {
+        width: calc(100% - 30rem);
+        height: 100%;
 
-.app.show-sidebar .header,
-.app.show-sidebar .main .content {
-  min-width: 30rem;
-}
+        & .content {
+          overflow: auto;
+          height: calc(100% - 7.5rem);
+        }
+      }
 
-.panel {
-  border: 0.01rem solid var(--shadow);
-  background-color: var(--white);
-  border-radius: 0.5rem;
-}
+      &.show-sidebar {
+        & .header {
+          min-width: 30rem;
+        }
 
-.app .sidebar .panel {
-  background-color: var(--background-color);
-}
+        & .main {
+          & .content {
+            min-width: 30rem;
+          }
+        }
+      }
+    }
 
-.panel .panel-header {
-  padding: 1rem;
-}
+    & .panel {
+      border: 0.01rem solid var(--shadow);
+      background-color: var(--white);
+      border-radius: 0.5rem;
 
-.panel .panel-content {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+      & .panel-header {
+        padding: 1rem;
+      }
+
+      & .panel-content {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  }
 }
 
 /* Grid */
