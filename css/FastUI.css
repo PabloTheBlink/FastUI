@@ -212,8 +212,7 @@ html {
           height: 6.5rem;
           display: flex;
           justify-content: space-between;
-          align-items: flex-end;
-          padding-bottom: 1rem;
+          align-items: center;
         }
 
         & button {
