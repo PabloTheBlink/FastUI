@@ -158,6 +158,7 @@ html {
         width: 30rem;
         height: 100%;
         background-color: var(--white);
+        transition: 1s;
 
         & .panel {
           background-color: var(--background-color);
@@ -184,7 +185,7 @@ html {
 
       &:not(.show-sidebar) {
         & .sidebar {
-          display: none;
+          margin-left: -30rem;
         }
 
         & .main {
