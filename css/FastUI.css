@@ -1,6 +1,8 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
 }
 
 @font-face {
@@ -17,8 +19,8 @@
 
 html:root {
   --background-color: #e8e8e8;
-  --white: white;
-  --black: rgb(57, 57, 57);
+  --white: rgba(255, 255, 255, 1);
+  --black: rgba(57, 57, 57, 1);
   --primary-color: #3d4c95;
   --secondary-color: #7c91c9;
   --shadow: #e9e9e9;
@@ -26,8 +28,8 @@ html:root {
 
 html[dark]:root {
   --background-color: #232e30;
-  --white: rgb(57, 57, 57);
-  --black: white;
+  --white: rgba(57, 57, 57, 1);
+  --black: rgba(255, 255, 255, 1);
   --primary-color: #3d4c95;
   --secondary-color: #7c91c9;
   --shadow: #eee;
@@ -35,11 +37,31 @@ html[dark]:root {
 
 html {
   font-family: Fredoka;
-  font-size: 14px;
+  font-size: 12px;
 
   & body {
     background-color: var(--background-color);
     color: var(--black);
+    letter-spacing: 0.075rem;
+
+    details {
+      & summary {
+        background-color: var(--black);
+        color: var(--white);
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem 0.5rem 0 0;
+        display: flex;
+        align-items: center;
+
+        &:not([disabled]) {
+          cursor: pointer;
+        }
+        &[disabled] {
+          pointer-events: none;
+          cursor: pointer;
+        }
+      }
+    }
 
     & .container {
       width: 100%;
@@ -80,7 +102,7 @@ html {
 
       & li {
         padding: 1rem;
-        border: 0.01rem solid var(--shadow);
+        border: 0.1rem solid var(--shadow);
         border-radius: 0.5rem;
         margin: 1rem 0;
         display: flex;
@@ -94,8 +116,8 @@ html {
         }
 
         &.active {
-          background-color: var(--black) !important;
-          color: var(--white);
+          background-color: var(--primary-color) !important;
+          color: white;
         }
 
         & button {
@@ -142,7 +164,7 @@ html {
     }
 
     & fieldset {
-      margin: 1rem 0;
+      margin: auto;
       border-radius: 0.5rem;
     }
 
@@ -153,24 +175,74 @@ html {
       width: 100%;
       height: 100%;
       display: flex;
+      background-size: cover;
 
       & .sidebar {
         width: 30rem;
         height: 100%;
         background-color: var(--white);
-        transition: 1s;
-
-        & .panel {
-          background-color: var(--background-color);
-        }
+        transition: 1s !important;
 
         & .header {
           padding: 1rem 2rem;
+          border-right: 0.1rem solid var(--background-color);
+          width: 100%;
+          height: 7.5rem;
+          color: var(--black);
+
+          & .header-top {
+            height: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            & button {
+              margin-top: 0.25rem;
+              padding: 0;
+            }
+          }
+
+          & .header-bottom {
+            height: 6.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            & h1 {
+              font-size: 2rem;
+              max-width: calc(100% - 4rem);
+
+              & span {
+                display: block;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 2rem;
+              }
+            }
+          }
+
+          & button {
+            & i {
+              font-size: 1.5rem;
+            }
+          }
+
+          & span {
+            font-size: 1.1rem;
+          }
         }
 
         & ul {
           & li {
             background-color: var(--background-color);
+
+            & span {
+              display: block;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
           }
         }
 
@@ -193,65 +265,29 @@ html {
         }
       }
 
-      & .header {
-        width: 100%;
-        height: 7.5rem;
-
-        & .header-top {
-          height: 1rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-
-          & button {
-            margin-top: 0.25rem;
-            padding: 0;
-          }
-        }
-
-        & .header-bottom {
-          height: 6.5rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        & button {
-          & i {
-            font-size: 1.5rem;
-          }
-        }
-
-        & span {
-          font-size: 1.1rem;
-        }
-      }
-
       & .main {
         width: calc(100% - 30rem);
         height: 100%;
+        transition: 1s !important;
+        overflow: auto;
 
-        & .content {
-          overflow: auto;
-          height: calc(100% - 7.5rem);
+        & .header {
+          background-color: var(--white);
+          position: sticky;
+          top: 0;
+          z-index: 1;
         }
       }
 
       &.show-sidebar {
-        & .header {
-          min-width: 30rem;
-        }
-
         & .main {
-          & .content {
-            min-width: 30rem;
-          }
+          min-width: 30rem;
         }
       }
     }
 
     & .panel {
-      border: 0.01rem solid var(--shadow);
+      border: 0.1rem solid var(--shadow);
       background-color: var(--white);
       border-radius: 0.5rem;
 
@@ -272,7 +308,7 @@ html {
 /* Grid */
 
 /* Estilos para dispositivos móviles */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1000px) {
   .row {
     display: flex;
     flex-direction: column;
@@ -380,4 +416,28 @@ html {
   flex: 0 0 auto;
   width: calc(100% - 1rem);
   max-width: calc(100% - 1rem);
+}
+
+label {
+  display: block;
+  margin-bottom: 1rem;
+
+  & span {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  & input,
+  & textarea,
+  & select {
+    width: 100%;
+    font-size: 1.1rem;
+  }
+
+  & textarea {
+    resize: none;
+    height: 5rem;
+  }
 }
